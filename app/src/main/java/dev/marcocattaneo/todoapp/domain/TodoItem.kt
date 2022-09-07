@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Marco Cattaneo
+ * Copyright 2022 Marco Cattaneo
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-object AppConfiguration {
-    const val APPLICATION_ID = "dev.marcocattaneo.todoapp"
-    const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0"
-}
+package dev.marcocattaneo.todoapp.domain
+
+data class TodoItem(
+    val text: String,
+    val done: Boolean = false,
+)

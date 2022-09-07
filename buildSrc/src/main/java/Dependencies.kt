@@ -21,6 +21,9 @@ object Versions {
     const val ACTIVITY = "1.5.0"
     const val KOTLIN = "1.7.0"
     const val HILT = "2.42"
+    const val FLOW_REDUX = "1.0.0"
+    const val COROUTINE_TEST = "1.6.4"
+    const val TURBINE = "0.9.0"
 }
 
 object Sdk {
@@ -38,6 +41,11 @@ object ComposeLibs {
     const val UI_TEST = "androidx.compose.ui:ui-test-junit4:${Versions.COMPOSE}"
     const val NAVIGATION = "androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION}"
     const val HILT_NAVIGATION = "androidx.hilt:hilt-navigation-compose:${Versions.COMPOSE_HILT_NAVIGATION}"
+}
+
+object FlowRedux {
+    const val CORE = "com.freeletics.flowredux:flowredux-jvm:${Versions.FLOW_REDUX}"
+    const val COMPOSE = "com.freeletics.flowredux:compose:${Versions.FLOW_REDUX}"
 }
 
 object HiltLibs {
@@ -58,6 +66,8 @@ object AndroidXTestLibs {
 
 object TestLibs {
     const val JUNIT = "junit:junit:4.13.2"
+    const val COROUTINE_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE_TEST}"
+    const val TURBINE = "app.cash.turbine:turbine:${Versions.TURBINE}"
 }
 
 object AndroidLibs {

@@ -79,7 +79,14 @@ dependencies {
     implementation(ComposeLibs.HILT_NAVIGATION)
     implementation(ComposeLibs.ACTIVITY)
 
+    implementation(FlowRedux.CORE)
+    implementation(FlowRedux.COMPOSE)
+
     testImplementation(TestLibs.JUNIT)
+    testImplementation(TestLibs.COROUTINE_TEST)
+    testImplementation(TestLibs.TURBINE)
+    testImplementation(kotlin("test"))
+
     androidTestImplementation(AndroidXTestLibs.JUNIT)
     androidTestImplementation(ComposeLibs.UI_TEST)
 

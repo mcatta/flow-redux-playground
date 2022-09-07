@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-object AppConfiguration {
-    const val APPLICATION_ID = "dev.marcocattaneo.todoapp"
-    const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0"
-}
+package dev.marcocattaneo.todoapp.di
+
+import dagger.hilt.android.HiltAndroidApp
+import dev.marcocattaneo.todoapp.BaseApplication
+
+@HiltAndroidApp
+open class MyApplication: BaseApplication()

@@ -14,8 +14,17 @@
  * limitations under the License.
  */
 
-object AppConfiguration {
-    const val APPLICATION_ID = "dev.marcocattaneo.todoapp"
-    const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0"
+package dev.marcocattaneo.todoapp.ui.screen
+
+import androidx.navigation.NavType
+import dev.marcocattaneo.todoapp.navigation.routing.ScreenRoute
+
+object Routes {
+
+    object TodoList : ScreenRoute(
+        routeDefinition = Definition("dashboard", argumentKeys = listOf(
+            "username" to { type = NavType.StringType; optional = false }
+        ))
+    )
+
 }

@@ -14,8 +14,16 @@
  * limitations under the License.
  */
 
-object AppConfiguration {
-    const val APPLICATION_ID = "dev.marcocattaneo.todoapp"
-    const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0"
-}
+package dev.marcocattaneo.todoapp.navigation.routing
+
+import androidx.navigation.NavType
+
+/**
+ * Arguments Options specify for the argument keys used on the Screen Routes
+ * @param type argument type
+ * @param optional true if argument is optional
+ */
+class ArgumentOptions(
+    var type: NavType<*> = NavType.StringType,
+    var optional: Boolean = false
+)

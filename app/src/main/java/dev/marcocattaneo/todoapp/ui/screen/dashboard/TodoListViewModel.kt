@@ -14,8 +14,15 @@
  * limitations under the License.
  */
 
-object AppConfiguration {
-    const val APPLICATION_ID = "dev.marcocattaneo.todoapp"
-    const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0"
-}
+package dev.marcocattaneo.todoapp.ui.screen.dashboard
+
+import androidx.lifecycle.SavedStateHandle
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.marcocattaneo.todoapp.ui.screen.common.AbsStateViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class TodoListViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
+    todoStateMachine: TodoStateMachine
+): AbsStateViewModel<TodoState, TodoAction>(todoStateMachine)
