@@ -139,3 +139,6 @@ hs_err_pid*
 
 # Cache of project
 .gradletasknamecache
+
+#GraphQL config
+/data/src/main/graphql/dev/marcocattaneo/playground/.graphqlconfig
