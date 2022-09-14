@@ -24,5 +24,5 @@ import javax.inject.Inject
 @HiltViewModel
 class GithubViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    todoStateMachine: TodoStateMachine
-): AbsStateViewModel<GithubState, GithubAction>(todoStateMachine)
+    githubStateMachine: GithubStateMachine
+): AbsStateViewModel<GithubState, GithubAction>(githubStateMachine)

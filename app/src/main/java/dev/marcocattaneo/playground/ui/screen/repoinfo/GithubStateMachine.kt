@@ -28,7 +28,7 @@ import kotlinx.coroutines.FlowPreview
 import javax.inject.Inject
 
 @ViewModelScoped
-class TodoStateMachine @Inject constructor(
+class GithubStateMachine @Inject constructor(
     private val githubRepository: GithubRepository
 ) : FlowReduxStateMachine<GithubState, GithubAction>(initialState = GithubState.ContentState()) {
     init {
@@ -39,7 +39,7 @@ class TodoStateMachine @Inject constructor(
                     val owner = state.snapshot.owner
                     githubRepository.repositoryByOwner(owner = owner).fold(
                         ifLeft = {
-                            state.override { GithubState.Error(Throwable("Fail")) }
+                            state.override { GithubState.Error(Throwable("Fail"), owner = owner) }
                         },
                         ifRight = {
                             state.override { GithubState.ContentState(repositories = it, owner = owner) }
@@ -51,7 +51,7 @@ class TodoStateMachine @Inject constructor(
             // Error
             inState {
                 on { _: GithubAction.RetryLoadingAction, state: State<GithubState.Error> ->
-                    state.noChange()
+                    state.override { GithubState.Load(owner = state.snapshot.owner) }
                 }
             }
 
@@ -78,7 +78,7 @@ class TodoStateMachine @Inject constructor(
 
 sealed interface GithubState {
     data class Load(val owner: String) : GithubState
-    data class Error(val e: Throwable) : GithubState
+    data class Error(val e: Throwable, val owner: String) : GithubState
     data class ContentState(
         val repositories: List<Repository> = emptyList(),
         val owner: String = "",

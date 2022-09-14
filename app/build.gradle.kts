@@ -88,6 +88,7 @@ dependencies {
     testImplementation(TestLibs.JUNIT)
     testImplementation(TestLibs.COROUTINE_TEST)
     testImplementation(TestLibs.TURBINE)
+    testImplementation(TestLibs.MOCKK)
     testImplementation(kotlin("test"))
 
     androidTestImplementation(AndroidXTestLibs.JUNIT)

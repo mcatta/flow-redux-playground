@@ -26,6 +26,7 @@ object Versions {
     const val TURBINE = "0.9.0"
     const val APOLLO = "3.6.0"
     const val ARROW = "1.0.1"
+    const val MOCKK = "1.12.7"
 }
 
 object Sdk {
@@ -78,6 +79,7 @@ object TestLibs {
     const val JUNIT = "junit:junit:4.13.2"
     const val COROUTINE_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE_TEST}"
     const val TURBINE = "app.cash.turbine:turbine:${Versions.TURBINE}"
+    const val MOCKK = "io.mockk:mockk:${Versions.MOCKK}"
 }
 
 object AndroidLibs {

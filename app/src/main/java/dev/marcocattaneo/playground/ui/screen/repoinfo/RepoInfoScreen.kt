@@ -14,32 +14,26 @@
  * limitations under the License.
  */
 
-@file:OptIn(ExperimentalFoundationApi::class)
-
 package dev.marcocattaneo.playground.ui.screen.repoinfo
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material.Button
-import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import dev.marcocattaneo.playground.domain.TodoItem
+import dev.marcocattaneo.playground.domain.models.Repository
 
 @Composable
-fun TodoScreen(
-    todoListViewModel: GithubViewModel
+fun RepoInfoScreen(
+    githubViewModel: GithubViewModel
 ) {
-    val uiState by todoListViewModel.rememberState()
+    val uiState by githubViewModel.rememberState()
 
     Column(
         modifier = Modifier
@@ -59,21 +53,19 @@ fun TodoScreen(
                         TextField(placeholder = {
                             Text(text = "Owner")
                         }, value = contentState.owner, onValueChange = {
-                            todoListViewModel.dispatch(GithubAction.TypeOwner(it))
+                            githubViewModel.dispatch(GithubAction.TypeOwner(it))
                         })
 
                         Button(
                             modifier = Modifier.padding(start = 16.dp),
-                            onClick = { todoListViewModel.dispatch(GithubAction.Confirm) },
+                            onClick = { githubViewModel.dispatch(GithubAction.Confirm) },
                             content = { Text(text = "OK") }
                         )
 
                     }
 
                     LazyColumn {
-                        contentState.repositories.forEach {
-                            item { Text(text = it.name) }
-                        }
+                        items(contentState.repositories)
                     }
 
                 }
@@ -81,7 +73,7 @@ fun TodoScreen(
 
             is GithubState.Error -> Column {
                 Text(text = "FAIL")
-                Button(onClick = { todoListViewModel.dispatch(GithubAction.RetryLoadingAction) }) {
+                Button(onClick = { githubViewModel.dispatch(GithubAction.RetryLoadingAction) }) {
                     Text(text = "Retry")
                 }
             }
@@ -95,26 +87,22 @@ fun TodoScreen(
     }
 }
 
-private fun LazyListScope.items(items: List<TodoItem>, onClickDone: (Int, Boolean) -> Unit) {
-    items.forEachIndexed { index, todo ->
+private fun LazyListScope.items(items: List<Repository>) {
+    items.forEach { item ->
         item {
-            TodoItem(text = todo.text, checked = todo.done) {
-                onClickDone(index, it)
-            }
+            RepoItem(text = item.name)
         }
     }
 }
 
 @Composable
-private fun TodoItem(text: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
+private fun RepoItem(text: String) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Checkbox(checked = checked, onCheckedChange = onCheckedChange)
         Text(
-            text = text,
-            style = if (checked) TextStyle(textDecoration = TextDecoration.LineThrough) else TextStyle.Default
+            text = text
         )
     }
 }

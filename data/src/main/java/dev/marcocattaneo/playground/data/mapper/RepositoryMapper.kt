@@ -21,9 +21,12 @@ import dev.marcocattaneo.playground.domain.common.Mapper
 import dev.marcocattaneo.playground.domain.models.Repository
 import javax.inject.Inject
 
-class RepositoryMapper @Inject constructor(): Mapper<RepositoryByOwnerQuery.Data, List<Repository>> {
-    override fun mapTo(from: RepositoryByOwnerQuery.Data): List<Repository> {
-        return from.user?.repositories?.nodes?.map { Repository(name = it!!.name) } ?: emptyList()
-    }
+class RepositoryMapper @Inject constructor() : Mapper<RepositoryByOwnerQuery.Data, List<Repository>> {
+    override fun mapTo(from: RepositoryByOwnerQuery.Data): List<Repository> =
+        (from.user?.repositories?.nodes ?: emptyList())
+            .filterNotNull()
+            .map {
+                Repository(name = it.name, id = it.id, url = it.url as String)
+            }
 
 }

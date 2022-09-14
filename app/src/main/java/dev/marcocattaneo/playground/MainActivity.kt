@@ -27,7 +27,7 @@ import dev.marcocattaneo.playground.navigation.NavigationComponent
 import dev.marcocattaneo.playground.navigation.NavigationControllerImpl
 import dev.marcocattaneo.playground.navigation.composable
 import dev.marcocattaneo.playground.ui.screen.Routes
-import dev.marcocattaneo.playground.ui.screen.repoinfo.TodoScreen
+import dev.marcocattaneo.playground.ui.screen.repoinfo.RepoInfoScreen
 import dev.marcocattaneo.playground.ui.screen.repoinfo.GithubViewModel
 import dev.marcocattaneo.playground.ui.theme.AndroidcomposetemplateTheme
 
@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
                             route = Routes.RepoInfo,
                             navigationController = controller
                         ) { _, vm ->
-                            TodoScreen(vm)
+                            RepoInfoScreen(vm)
                         }
                     }
                 }

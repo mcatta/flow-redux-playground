@@ -15,7 +15,7 @@
  */
 
 object AppConfiguration {
-    const val APPLICATION_ID = "dev.marcocattaneo.todoapp"
+    const val APPLICATION_ID = "dev.marcocattaneo.playground"
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0"
 }

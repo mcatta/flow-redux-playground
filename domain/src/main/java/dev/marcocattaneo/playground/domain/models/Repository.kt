@@ -17,5 +17,7 @@
 package dev.marcocattaneo.playground.domain.models
 
 class Repository(
-    val name: String
+    val id: String,
+    val name: String,
+    val url: String,
 )
