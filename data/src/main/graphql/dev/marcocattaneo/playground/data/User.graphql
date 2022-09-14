@@ -1,0 +1,9 @@
+query RepositoryByOwner($owner: String!, $number_of_repos: Int!) {
+  user(login: $owner) {
+    repositories(last: $number_of_repos) {
+      nodes {
+        name
+      }
+    }
+  }
+}

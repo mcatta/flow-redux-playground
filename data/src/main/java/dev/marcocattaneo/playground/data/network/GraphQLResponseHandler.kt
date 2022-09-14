@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+package dev.marcocattaneo.playground.data.network
+
+import arrow.core.Either
+import com.apollographql.apollo3.api.ApolloResponse
+import com.apollographql.apollo3.api.Operation
+import dev.marcocattaneo.playground.domain.error.AppError
+
+interface GraphQLResponseHandler  {
+
+    suspend fun <D : Operation.Data> handleResponse(block: suspend () -> ApolloResponse<D>): Either<AppError, D>
+
 }
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")

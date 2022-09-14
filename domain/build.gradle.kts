@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+plugins {
+    id("java-library")
+    id("org.jetbrains.kotlin.jvm")
 }
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    api(Common.ARROW_CORE)
+}

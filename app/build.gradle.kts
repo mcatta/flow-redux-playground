@@ -68,6 +68,9 @@ kapt {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data")))
+
     implementation(AndroidXLibs.CORE)
     implementation(AndroidXLibs.APP_COMPACT)
     implementation(AndroidLibs.MATERIAL)

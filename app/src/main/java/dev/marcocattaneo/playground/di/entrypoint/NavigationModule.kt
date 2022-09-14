@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Marco Cattaneo
+ * Copyright 2021 Marco Cattaneo
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+package dev.marcocattaneo.playground.di.entrypoint
+
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dev.marcocattaneo.playground.di.component.ComposableComponent
+
+@InstallIn(ComposableComponent::class)
+@EntryPoint
+interface ComposableEntryPoint {
+
 }
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Marco Cattaneo
+ * Copyright 2021 Marco Cattaneo
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")
+package dev.marcocattaneo.playground.ui.screen.repoinfo
+
+import androidx.lifecycle.SavedStateHandle
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.marcocattaneo.playground.ui.screen.common.AbsStateViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class GithubViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
+    todoStateMachine: TodoStateMachine
+): AbsStateViewModel<GithubState, GithubAction>(todoStateMachine)

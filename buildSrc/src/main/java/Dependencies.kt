@@ -24,6 +24,8 @@ object Versions {
     const val FLOW_REDUX = "1.0.0"
     const val COROUTINE_TEST = "1.6.4"
     const val TURBINE = "0.9.0"
+    const val APOLLO = "3.6.0"
+    const val ARROW = "1.0.1"
 }
 
 object Sdk {
@@ -53,6 +55,14 @@ object HiltLibs {
     const val CORE = "com.google.dagger:hilt-core:${Versions.HILT}"
     const val COMPILER = "com.google.dagger:hilt-compiler:${Versions.HILT}"
     const val ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+}
+
+object Network {
+    const val APOLLO = "com.apollographql.apollo3:apollo-runtime:${Versions.APOLLO}"
+}
+
+object Common {
+    const val ARROW_CORE = "io.arrow-kt:arrow-core:${Versions.ARROW}"
 }
 
 object AndroidXLibs {

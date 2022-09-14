@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Marco Cattaneo
+ * Copyright 2021 Marco Cattaneo
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")
+package dev.marcocattaneo.playground.navigation.routing
+
+import androidx.navigation.NavType
+
+/**
+ * Arguments Options specify for the argument keys used on the Screen Routes
+ * @param type argument type
+ * @param optional true if argument is optional
+ */
+class ArgumentOptions(
+    var type: NavType<*> = NavType.StringType,
+    var optional: Boolean = false
+)

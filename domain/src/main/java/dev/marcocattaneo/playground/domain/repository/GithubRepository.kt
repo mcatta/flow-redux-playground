@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+package dev.marcocattaneo.playground.domain.repository
+
+import arrow.core.Either
+import dev.marcocattaneo.playground.domain.error.AppError
+import dev.marcocattaneo.playground.domain.models.Repository
+
+interface GithubRepository {
+
+    suspend fun repositoryByOwner(owner: String): Either<AppError, List<Repository>>
+
 }
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")

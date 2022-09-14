@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
+package dev.marcocattaneo.playground.data.mapper
+
+import dev.marcocattaneo.playground.data.RepositoryByOwnerQuery
+import dev.marcocattaneo.playground.domain.common.Mapper
+import dev.marcocattaneo.playground.domain.models.Repository
+import javax.inject.Inject
+
+class RepositoryMapper @Inject constructor(): Mapper<RepositoryByOwnerQuery.Data, List<Repository>> {
+    override fun mapTo(from: RepositoryByOwnerQuery.Data): List<Repository> {
+        return from.user?.repositories?.nodes?.map { Repository(name = it!!.name) } ?: emptyList()
     }
+
 }
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")

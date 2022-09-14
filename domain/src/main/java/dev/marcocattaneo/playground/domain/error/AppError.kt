@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+package dev.marcocattaneo.playground.domain.error
+
+import java.lang.Error
+
+sealed interface AppError {
+
+    object Network: AppError
+
+    object Parsing: AppError
+
+    class Unknown(val list: List<Error>): AppError
+
 }
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")

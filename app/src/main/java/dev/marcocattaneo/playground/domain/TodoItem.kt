@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "flow-redux-playground"
-include(":app")
-include(":data")
-include(":domain")
+package dev.marcocattaneo.playground.domain
+
+data class TodoItem(
+    val id: Long = System.currentTimeMillis(),
+    val text: String,
+    val done: Boolean = false,
+)
